@@ -1,0 +1,101 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll                    long long
+#define ld                    long double
+#define pb                    push_back
+#define lb                    lower_bound
+#define ub                    upper_bound
+#define ff                    first
+#define ss                    second
+#define maxpq                 priority_queue <ll> pq;
+#define minpq                 priority_queue <ll, vector<ll>, greater<ll> > pq;
+#define inpv(v)               for(auto &x: v) cin>>x;
+#define fr(i,n)               for (ll i=0;i<n;++i)
+#define all(str)              sort(str.begin(), str.end())
+#define ALL(x)                x.begin(),x.end()
+#define allc(x,c)             sort(x.begin(),x.end(),cmp)
+#define pll                   pair<ll,ll>
+#define printv(v)             for(auto &i: v){cout << i << " ";} cout << endl;
+#define printmap(mp)          for(auto &i: mp){cout << i.first << " "<<i.second<<endl;}
+#define printset(st)          for(auto &i: st){cout << i << " ";} cout << endl;
+#define line                  cout<<"----------------------------------------"<<endl;
+#define arrow                 cout<<"--->";
+#define debugmap(mp)          for(auto &i: mp){cout << i.ff << "-->" << i.ss <<endl;} cout << endl;
+#define debugset(st)          for(auto &i: st){cout << i << " ";} cout << endl;
+#define faster                ios_base::sync_with_stdio(false);cin.tie(NULL);
+#define sp(x)                 fixed<<setprecision(x)
+#define PI                    3.141592653589793238
+#define bpl(n)                __builtin_popcountll(n);
+#define md                    998244353
+#define modval                1000000007
+#define YES                   cout<<"YES"<<endl;
+#define NO                    cout<<"NO"<<endl;
+#define yes                   cout<<"yes"<<endl;
+#define no                    cout<<"no"<<endl;
+#define endl                   " \n"
+/*----------------------------------------------------------------------------------------------------------- */
+
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+
+using namespace std;
+using namespace __gnu_pbds;
+typedef tree<long long, null_type, less<long long>, rb_tree_tag, tree_order_statistics_node_update> pbds;
+
+void solve()
+{
+  ll n; cin>>n;
+  ll a[n];
+  for(auto&u:a)cin>>u;
+  ll v[n+1][n];
+  for(ll i=0;i<n;i++)
+  {
+      v[0][i]=a[i];
+  }
+  for(ll i=1;i<=n;i++)
+  {
+      map<ll,ll>mp;
+      for(ll i=0;i<n;i++)
+      {
+          mp[a[i]]++;
+      }
+      for(ll j=0;j<n;j++)
+      {
+          a[j]=mp[a[j]];
+          v[i][j]=a[j];
+      }
+  }
+  ll q; cin>>q;
+  while(q--)
+  {
+      ll x,k; cin>>x>>k;
+      x--;
+      if(k<=n)
+      {
+          cout<<v[k][x]<<endl;
+      }else cout<<v[n][x]<<endl;
+  }
+
+}
+
+int main()
+{
+
+    faster;
+
+    ll t;
+    cin>>t;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
+
+
+
+
+
+
+
